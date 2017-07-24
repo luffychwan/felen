@@ -1,0 +1,28 @@
+<h1><%= @mood.emotion.upcase %></h1>
+<% @contents.each do |c| %>
+  <div>
+    <b><%= link_to c.subject.capitalize, c.link, target: :_blank %></b>
+  </div>
+<% end %>
+<button data-toggle="modal" data-target="#addModal">ADD</button>
+<div class="modal fade" id="addModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">CREATE</h4>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <%= form_for @content do |form| %>
+          <%= form.text_field :link, type: 'link', placeholder: 'paste url here', required: true %>
+          <%= form.hidden_field :mood_id, value: @mood.id %>
+          <%= form.submit "ADD", class: 'btn' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
