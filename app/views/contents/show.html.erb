@@ -1,10 +1,30 @@
-<h1><%= @mood.emotion.upcase %></h1>
-<% @contents.each do |c| %>
-  <div>
-    <b><%= link_to c.subject.capitalize, c.link, target: :_blank %></b>
+<style type="text/css">
+  #contentsDiv {
+    background-color: white;
+  }
+</style>
+<!--  -->
+<div class="container-fluid">
+  <h1><%= @mood.emotion.upcase %></h1>
+  <hr>
+  <%= link_to 'Video' %>&emsp;<%= link_to 'Movie' %>&emsp;<%= link_to 'Podcast' %>&emsp;<%= link_to 'Article' %>&emsp;<%= link_to 'Blog' %>
+  <hr>
+  <div class="col-md-3">
+    <p></p>
   </div>
-<% end %>
-<button data-toggle="modal" data-target="#addModal">ADD</button>
+  <div class="col-md-6 well" id="contentsDiv">
+    <% @contents.each do |c| %>
+      <div class="well">
+        <b><%= link_to c.subject, c.link, target: :_blank %></b>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <p>FORUM</p>
+  </div>
+  <hr style="clear: both;">
+  <button data-toggle="modal" data-target="#addModal">ADD</button>
+</div>
 <div class="modal fade" id="addModal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
