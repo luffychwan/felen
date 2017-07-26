@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20170724022600) do
     t.string "link"
     t.string "photos"
     t.bigint "mood_id"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
     t.index ["mood_id"], name: "index_contents_on_mood_id"
   end
 
